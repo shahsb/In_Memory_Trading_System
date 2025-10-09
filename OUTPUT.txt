@@ -1,4 +1,4 @@
-[root@1e8dd3605467 phonepe]# g++ -std=c++17 -pthread inMemoryTradeSystem_4.cpp -o inMemoryTradingSystem
+[root@1e8dd3605467 phonepe]# g++ -std=c++17 -pthread inMemoryTradeSystem.cpp -o inMemoryTradingSystem
 [root@1e8dd3605467 phonepe]#
 [root@1e8dd3605467 phonepe]# ./inMemoryTradingSystem
 STARTING COMPREHENSIVE TRADING SYSTEM TESTS

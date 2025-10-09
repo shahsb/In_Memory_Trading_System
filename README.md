@@ -2,7 +2,7 @@
 
 # Steps to Compile:
 ```
-g++ -std=c++17 -pthread inMemoryTradeSystem.cpp -o inMemoryTradingSystem
+g++ -std=c++17 -pthread InMemoryTradeSystem.cpp -o inMemoryTradingSystem
 ```
 
 # Steps to Execute:

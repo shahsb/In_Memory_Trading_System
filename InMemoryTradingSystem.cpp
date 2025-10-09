@@ -211,14 +211,14 @@ namespace TradingSystem {
             return std::make_unique<MarketOrder>(*this);
         }
         
-        // FIXED: Market orders should still validate price is not negative
+        // Market orders should still validate price is not negative
         bool isValid() const override {
             return !orderId_.empty() && !userId_.empty() && !symbol_.empty() &&
                    quantity_ > 0 && quantity_ <= MAX_ORDER_QUANTITY &&
                    price_ >= 0; // Market orders can have 0 price but not negative
         }
         
-        // FIXED: Market orders cannot set price (they execute at market price)
+        // Market orders cannot set price (they execute at market price)
         bool setPrice(Price newPrice) override {
             return false; // Market orders cannot change price
         }
@@ -1157,7 +1157,7 @@ int main() {
         allTestsPassed &= testOrderCancellation();
         allTestsPassed &= testOrderModification();
         allTestsPassed &= testPartialOrderMatching();
-        allTestsPassed &= testInvalidOrders();  // This was failing due to negative price validation
+        allTestsPassed &= testInvalidOrders();
         allTestsPassed &= testMarketDataQueries();
         allTestsPassed &= testMultipleSymbols();
         

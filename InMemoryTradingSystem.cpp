@@ -27,7 +27,7 @@ namespace TradingSystem {
     // DESIGN PRINCIPLE: Use strong typing with enums instead of primitive types
     enum class OrderType { BUY, SELL };
     enum class OrderStatus { PENDING, ACCEPTED, PARTIALLY_FILLED, FILLED, CANCELLED, REJECTED };
-    enum class OrderTimeInForce { GTC, IOC, FOK };
+    enum class OrderTimeInForce { GTC, IOC, FOK }; // Good Till Cancel, Immediate or Cancel, Fill or Kill
 
     // DESIGN DECISION: Define system-wide constraints to prevent invalid states
     constexpr int MAX_ORDER_QUANTITY = 1000000;

@@ -353,9 +353,8 @@ namespace TradingSystem {
             return false;
         }
         
-        // FIXED: Order modification without deadlock
         bool modifyOrder(const OrderId& orderId, Quantity newQuantity, Price newPrice) {
-            // First, find the order and validate without holding the lock for too long
+            // First, find the order and validate without holding the lock for too long -- Order modification without deadlock.
             std::shared_ptr<Order> existingOrder;
             {
                 std::shared_lock lock(mutex_);
@@ -508,7 +507,9 @@ namespace TradingSystem {
         virtual void onOrderStatusChanged(const std::shared_ptr<Order>& order) = 0;
     };
 
-    // TRADING ENGINE - SINGLETON PATTERN FOR GLOBAL ACCESS
+    // TRADING ENGINE 
+    // DESIGN PATTERN - SINGLETON PATTERN FOR GLOBAL ACCESS
+    // DESIGN PATTERN - FACADE PATTERN 
     class TradingEngine {
     private:
         static TradingEngine* instance_;
@@ -559,7 +560,7 @@ namespace TradingSystem {
             OrderId orderId = generateUUID();
             std::unique_ptr<Order> order;
             
-            // FIXED: Validate price before creating order
+            // Validate price before creating order
             if (price < 0) {
                 return nullptr; // Reject negative prices immediately
             }
@@ -625,12 +626,11 @@ namespace TradingSystem {
             return false;
         }
         
-        // FIXED: Order modification without deadlock
         bool modifyOrder(const UserId& userId, const OrderId& orderId,
                         Quantity newQuantity, Price newPrice) {
             if (!getUser(userId)) return false;
             
-            // FIXED: Validate price before attempting modification
+            // Validate price before attempting modification
             if (newPrice < 0) {
                 return false;
             }

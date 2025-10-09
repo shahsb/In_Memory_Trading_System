@@ -1,1 +1,14 @@
-# In_Memory_Trading_System
+# In Memory Trading System
+
+# Steps to Compile:
+```
+g++ -std=c++17 -pthread inMemoryTradeSystem_4.cpp -o inMemoryTradingSystem
+```
+
+# Steps to Execute:
+```
+./inMemoryTradingSystem
+```
+
+# Test case execution Result:
+https://github.com/shahsb/In_Memory_Trading_System/blob/main/OUTPUT.txt

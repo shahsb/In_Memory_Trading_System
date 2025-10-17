@@ -1,41 +1,59 @@
-[root@1e8dd3605467 phonepe]# g++ -std=c++17 -pthread inMemoryTradeSystem.cpp -o inMemoryTradingSystem
-[root@1e8dd3605467 phonepe]#
-[root@1e8dd3605467 phonepe]# ./inMemoryTradingSystem
+[root@1e8dd3605467 tradingSystem]# make clean
+rm -rf obj bin
+[root@1e8dd3605467 tradingSystem]# ls
+include  makefile  src
+
+
+[root@1e8dd3605467 tradingSystem]# make
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/Order.cpp -o obj/Order.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/OrderBook.cpp -o obj/OrderBook.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/Trade.cpp -o obj/Trade.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/TradeObserver.cpp -o obj/TradeObserver.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/TradingEngine.cpp -o obj/TradingEngine.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/TradingSystemCore.cpp -o obj/TradingSystemCore.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/User.cpp -o obj/User.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -c src/main.cpp -o obj/main.o
+g++ -std=c++17 -Wall -Wextra -O2 -pthread -Iinclude -o bin/trading_system obj/Order.o obj/OrderBook.o obj/Trade.o obj/TradeObserver.o obj/TradingEngine.o obj/TradingSystemCore.o obj/User.o obj/main.o
+[root@1e8dd3605467 tradingSystem]#
+
+
+[root@1e8dd3605467 tradingSystem]# make test
+./bin/trading_system
 STARTING COMPREHENSIVE TRADING SYSTEM TESTS
 ===========================================
 
 === Test 1: Basic Order Placement ===
-[TEST] Order Updated: 2b251643-51ff-40e9-a186-31acd811feb2 Status: 1 Remaining: 100
+[TEST] Order Updated: 524b1264-3f57-4ae0-b187-f3afdbde1ee1 Status: 1 Remaining: 100
 PASS: Basic Order Placement Test
 
 === Test 2: Order Matching ===
-[TEST] Order Updated: c8aa9146-40e4-4141-b7e8-c2ccee6546f7 Status: 1 Remaining: 100
-[TEST] Order Updated: 17790498-4484-4da9-b812-3abda9535b2a Status: 1 Remaining: 100
+[TEST] Order Updated: 60237129-4d26-42a3-ae4d-1e7bb33322c5 Status: 1 Remaining: 100
+[TEST] Order Updated: f2ed9bb3-2b31-4427-bb0d-d690cf773776 Status: 1 Remaining: 100
 [TEST] Trade Executed: WIPRO Qty: 100 Price: 500
 PASS: Order Matching Test
 
 === Test 3: Price-Time Priority ===
-[TEST] Order Updated: 369806cc-6ee1-4a73-9850-b4e685ad876d Status: 1 Remaining: 100
-[TEST] Order Updated: 38962c9a-531b-433b-94f9-6615dc407594 Status: 1 Remaining: 100
-[TEST] Order Updated: 2082389e-dd31-44ef-b805-182892786db3 Status: 1 Remaining: 100
+[TEST] Order Updated: 6b296f21-2a82-4181-ac47-b8b91081cd26 Status: 1 Remaining: 100
+[TEST] Order Updated: c0cb8d31-7ccd-4497-9f6b-ec1cd6326115 Status: 1 Remaining: 100
+[TEST] Order Updated: c2f7ff1f-1946-4b25-ba3a-3eb24de0a3da Status: 1 Remaining: 100
 [TEST] Trade Executed: INFY Qty: 100 Price: 1800
 PASS: Price-Time Priority Test
 
 === Test 4: Order Cancellation ===
-[TEST] Order Updated: b62715ac-9a99-44b4-9715-f895b5d93c04 Status: 1 Remaining: 50
-[TEST] Order Updated: b62715ac-9a99-44b4-9715-f895b5d93c04 Status: 4 Remaining: 50
+[TEST] Order Updated: 3d20f74f-e523-4fac-a8d0-c7c0d262d508 Status: 1 Remaining: 50
+[TEST] Order Updated: 3d20f74f-e523-4fac-a8d0-c7c0d262d508 Status: 4 Remaining: 50
 PASS: Order Cancellation Test
 
 === Test 5: Order Modification ===
-[TEST] Order Updated: 335f0758-a8cb-41ab-92a9-634f2e8be482 Status: 1 Remaining: 100
-[TEST] Order Updated: 335f0758-a8cb-41ab-92a9-634f2e8be482 Status: 1 Remaining: 150
+[TEST] Order Updated: 816e7982-0152-4f91-af83-af9af6819bbd Status: 1 Remaining: 100
+[TEST] Order Updated: 816e7982-0152-4f91-af83-af9af6819bbd Status: 1 Remaining: 150
 PASS: Order Modification Test
 
 === Test 6: Partial Order Matching ===
-[TEST] Order Updated: 3da40d27-fbab-46d0-9bd1-849193e05562 Status: 1 Remaining: 1000
-[TEST] Order Updated: 1a867b01-bc9b-4b1f-bf26-abbd7d0ae18c Status: 1 Remaining: 300
+[TEST] Order Updated: 880e167e-282a-49ac-8d67-236d0d0f3138 Status: 1 Remaining: 1000
+[TEST] Order Updated: eed3df9f-a341-42b3-988a-33460b7d0a5d Status: 1 Remaining: 300
 [TEST] Trade Executed: SBIN Qty: 300 Price: 600
-[TEST] Order Updated: 7a523bd2-756d-475b-9ea4-ee327aace447 Status: 1 Remaining: 400
+[TEST] Order Updated: 5c043bd8-7585-4457-bfcd-c907461a6a42 Status: 1 Remaining: 400
 [TEST] Trade Executed: SBIN Qty: 400 Price: 600
 PASS: Partial Order Matching Test
 
@@ -43,47 +61,53 @@ PASS: Partial Order Matching Test
 PASS: Invalid Orders Test
 
 === Test 9: Market Data Queries ===
-[TEST] Order Updated: 0ae1d136-485e-4d77-a527-16cbcd123419 Status: 1 Remaining: 100
-[TEST] Order Updated: 405fed7c-20f9-4116-926b-97e86a711fdf Status: 1 Remaining: 200
-[TEST] Order Updated: 0c6cd22d-f99b-4162-a1e4-887522787772 Status: 1 Remaining: 150
-[TEST] Order Updated: 5a218b59-13b9-4837-bc32-cf5e7c5ab0e7 Status: 1 Remaining: 100
+[TEST] Order Updated: 8b6f2ff0-e5ac-4240-b181-f706e57ae723 Status: 1 Remaining: 100
+[TEST] Order Updated: bd5a3ef3-d7d4-40f1-8e44-903433bccf91 Status: 1 Remaining: 200
+[TEST] Order Updated: a22587a7-be62-4d9d-94ad-6d6f6c12aec5 Status: 1 Remaining: 150
+[TEST] Order Updated: ce0d5e2c-65ca-401d-996b-ee1f57381633 Status: 1 Remaining: 100
 PASS: Market Data Queries Test
 
 === Test 10: Multiple Symbols ===
-[TEST] Order Updated: 053202b4-4832-444d-a760-4bbffe048ecf Status: 1 Remaining: 100
-[TEST] Order Updated: 4ae292a0-1e3b-473a-89b0-ff24ff952956 Status: 1 Remaining: 50
-[TEST] Order Updated: 35cc348c-fb1c-4be6-a8dd-3aed5698a17a Status: 1 Remaining: 200
+[TEST] Order Updated: 364196aa-7a23-47ae-aae7-f6f5ca802ce9 Status: 1 Remaining: 100
+[TEST] Order Updated: b3d047a6-2f4a-43d1-add7-63bc9e9e9b0b Status: 1 Remaining: 50
+[TEST] Order Updated: c22b015f-7420-4e00-ae60-66e777c02c0e Status: 1 Remaining: 200
 PASS: Multiple Symbols Test
 
 === Test 8: Concurrency Stress Test ===
-[TEST] Order Updated: a722dd0f-ceb7-4d0a-93f9-4c89cfe861ae Status: 1 Remaining: 10
-[TEST] Order Updated: 884e91af-4661-4ca3-b288-6801a6caec1e Status: 1 Remaining: 10
-[TEST] Order Updated: 9521d8ad-24d7-46a6-8902-8d6cac9258ed Status: 1 Remaining: 10
-[TEST] Order Updated: 21637776-dcb7-4ec6-88c8-6976d3915b83 Status: 1 Remaining: 10
-[TEST] Order Updated: 8afb536e-d2f5-4c79-a25f-f88a56cbbee8 Status: 1 Remaining: 10
-[TEST] Order Updated: 1f53eb78-69f5-4593-aad5-29c2e92c1a8d Status: 1 Remaining: 10
-[TEST] Order Updated: 5852dec7-3609-4dd2-8dd4-d62e7c47dbe9 Status: 1 Remaining: 10
-[TEST] Order Updated: 5d6d03bb-aa35-4e70-8851-dc2eba63b73d Status: 1 Remaining: 10
-[TEST] Order Updated: 008ee562-a5a8-44f7-b83c-142c39ead93d Status: 1 Remaining: 10
-[TEST] Order Updated: 074edd22-52a6-45c6-ba07-50d6663e31fd Status: 1 Remaining: 10
-[TEST] Order Updated: 7a39c76e-3f7b-4a38-813f-814930161559 Status: 1 Remaining: 10
+[TEST] Order Updated: 114c06c6-71ca-46fb-96ff-33c2d10acf00 Status: 1 Remaining: 10
 [TEST] Trade Executed: AXIS Qty: 10 Price: 1000
-[TEST] Order Updated: 0b80efa1-ce71-48e4-9c6d-a0e532db569c Status: 1 Remaining: 10
+[TEST] Order Updated: c92cc1b8-3c98-4327-9d73-5ed6d0494d8b Status: 1 Remaining: 10
+[TEST] Order Updated: 022d4bd0-866a-4803-a447-9c33994ebd4e Status: 1 Remaining: 10
+[TEST] Order Updated: 4dee196b-680b-4b83-aac2-2575d6c9295e Status: 1 Remaining: 10
+[TEST] Order Updated: 1b0c04fe-5fe6-4a39-bb37-d8e60c37c739 Status: 1 Remaining: 10
+[TEST] Order Updated: cea69fcf-967c-4eaa-853d-c1fe0f94eb99 Status: 1 Remaining: 10
+[TEST] Order Updated: 83afb169-06dd-4350-83d8-cf09378977ff Status: 1 Remaining: 10
+[TEST] Order Updated: 4d120807-72f3-4547-9ae1-717cf9dc2f22 Status: 1 Remaining: 10
+[TEST] Order Updated: 1f17c905-40b6-44a9-96c6-40464e3ad2e2 Status: 1 Remaining: 10
+[TEST] Order Updated: 740372d3-922d-459f-8184-caecde913049 Status: 1 Remaining: 10
+[TEST] Order Updated: c8beb22a-62a8-4598-9c05-922f90e7d53d Status: 3 Remaining: 0
+[TEST] Order Updated: e7fdc98e-d21c-494d-a061-d1df876af970 Status: 1 Remaining: 10
 [TEST] Trade Executed: AXIS Qty: 10 Price: 1001
-[TEST] Order Updated: 83ac9f5b-6796-403d-a09c-9c5e3625bc18 Status: 1 Remaining: 10
+[TEST] Order Updated: fe6d01df-52b9-4be1-87af-f44ca1049f44 Status: 1 Remaining: 10
 [TEST] Trade Executed: AXIS Qty: 10 Price: 1002
-[TEST] Order Updated: 0a91dfb2-d10d-4358-a60a-316cacb94b56 Status: 1 Remaining: 10
+[TEST] Order Updated: 956c1ad4-b022-4ac1-9c94-2d2c5f394dfe Status: 1 Remaining: 10
 [TEST] Trade Executed: AXIS Qty: 10 Price: 1003
-[TEST] Order Updated: d5746b39-577f-4908-8377-2ed2bfb2dbd0 Status: 1 Remaining: 10
+[TEST] Order Updated: 2169754a-7b76-4361-919f-3f12b21aa4f4 Status: 1 Remaining: 10
 [TEST] Trade Executed: AXIS Qty: 10 Price: 1004
-[TEST] Order Updated: c8a04f54-a84d-4e31-ade3-a2d872ea55c7 Status: 1 Remaining: 10
-[TEST] Order Updated: 1639116d-1762-4449-a981-4f0f17ef44b3 Status: 1 Remaining: 10
-[TEST] Order Updated: e0758185-678d-4368-89ad-50b3e0a8f7f8 Status: 1 Remaining: 10
-[TEST] Order Updated: c2d4d25c-dff0-4442-96fb-bfd884b6f0f9 Status: 1 Remaining: 10
-[TEST] Order Updated: e3f83b48-279b-4c3d-b38a-d8efb63a2e81 Status: 1 Remaining: 10
-Successful Orders: 15
-Executed Trades: 5
+[TEST] Order Updated: eff4e91c-cd2c-427d-a594-211070482ec6 Status: 1 Remaining: 10
+[TEST] Trade Executed: AXIS Qty: 10 Price: 1005
+[TEST] Order Updated: 32eb0c2c-a7a5-4256-a02e-fc82cc43948d Status: 1 Remaining: 10
+[TEST] Trade Executed: AXIS Qty: 10 Price: 1006
+[TEST] Order Updated: 8714c7e9-cdb6-453d-8ea6-149146415e93 Status: 1 Remaining: 10
+[TEST] Trade Executed: AXIS Qty: 10 Price: 1007
+[TEST] Order Updated: 4bad7511-e2f2-492f-ad4d-3ca68738c4c1 Status: 1 Remaining: 10
+[TEST] Trade Executed: AXIS Qty: 10 Price: 1008
+[TEST] Order Updated: 9a485714-950d-4754-8815-58045472a89e Status: 1 Remaining: 10
+[TEST] Trade Executed: AXIS Qty: 10 Price: 1009
+Successful Orders: 9
+Executed Trades: 10
 PASS: Concurrency Stress Test
 
 ===========================================
 ALL TESTS PASSED! Trading System is working correctly.
+[root@1e8dd3605467 tradingSystem]#
